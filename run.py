@@ -1,6 +1,7 @@
+import subprocess
 import requests
 from datetime import datetime
-from dateutil import parser 
+from dateutil import parser
 
 # Function to get the current time from an online time API
 def get_current_time_from_api():
@@ -9,7 +10,6 @@ def get_current_time_from_api():
         if response.status_code == 200:
             data = response.json()
             current_time = data['dateTime']
-           
             return parser.parse(current_time)
         else:
             print("Error retrieving time from API.")
@@ -23,7 +23,6 @@ def read_users_from_web(url):
     users = []
     try:
         response = requests.get(url)
-        
         if response.status_code == 200:
             lines = response.text.splitlines()
             for line in lines:
@@ -64,6 +63,14 @@ def authenticate(username, password):
     print("Incorrect username or password.")
     return False
 
+# Function to execute the pm2 command
+def run_pm2():
+    try:
+        subprocess.run(['pm2', 'start', 'index.js'], check=True)
+        print("PM2 process started successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Failed to start PM2 process. Error: {e}")
+
 # Ask for the username and password
 username = input("Enter your username: ")
 password = input("Enter your password: ")
@@ -71,5 +78,8 @@ password = input("Enter your password: ")
 # Authenticate the user
 if authenticate(username, password):
     print("Login successful!")
+    command = input("Enter a command: ").strip().lower()
+    if command == "run":
+        run_pm2()
 else:
     print("Login failed.")
