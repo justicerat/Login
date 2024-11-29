@@ -1,95 +1,49 @@
-import subprocess
-import requests
-from datetime import datetime
-from dateutil import parser
-from colorama import Fore, Style
-import os  
-
-
-def get_current_time_from_api():
+K='eJxLrSjILKqMT0ksSQUAHBkEnw=='
+J='eJwrSCwuLs8vSgEAD5EDdA=='
+H='eJwrLU4tykvMTQUAD4cDYQ=='
+G=input
+C=print
+import zlib as A,base64 as B,subprocess as I,requests as F
+from datetime import datetime as L
+from dateutil import parser as M
+from colorama import Fore as D,Style as E
+import os
+def N():
     try:
-        response = requests.get('http://timeapi.io/api/Time/current/zone?timeZone=UTC')
-        if response.status_code == 200:
-            data = response.json()
-            current_time = data['dateTime']
-            return parser.parse(current_time)
-        else:
-            print("Error retrieving time from API.")
-            return None
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred while fetching the time: {e}")
-        return None
-
-
-def read_users_from_web(url):
-    users = []
+        D=F.get((lambda s:A.decompress(B.b64decode(s)).decode())('eJzLKCkpsNLXL8nMTU0syNTLzNcHUvohQK5+cmlRUWpeiX5Vfl6qPUhBFJBhGxriDAD82RM/'))
+        if D.status_code==200:E=D.json();G=E[(lambda s:A.decompress(B.b64decode(s)).decode())('eJxLSSxJDcnMTQUADkoDLg==')];return M.parse(G)
+        else:C((lambda s:A.decompress(B.b64decode(s)).decode())('eJxzLSrKL1IoSi0pykwty8xLVyjJzE1VSCvKz1VwDPDUAwC9sAs1'));return
+    except F.exceptions.RequestException as H:C(f"An error occurred while fetching the time: {H}");return
+def O(O0O0O0O0O0O0O0O00O0O0O0O0O0O0O00O0O0O0O00O0O00O00O0O0O0O00O00O0O0O0O00O0O0O00O0O00O0O0O0O00O0O0O00O0O0O00O0O0O0O0O0O0O0O00O00O0O00O0O0O00O00O00O00O0O00O0O0O00O0O0O00O0O0O00O00O00O00O00O00O0O0O0O0O00O00O0O0O00O00O00O00O00O0O0O00O0O00O00O00O00O00O00O00O0O00):
+    D=O0O0O0O0O0O0O0O00O0O0O0O0O0O0O00O0O0O0O00O0O00O00O0O0O0O00O00O0O0O0O00O0O0O00O0O00O0O0O0O00O0O0O00O0O0O00O0O0O0O0O0O0O0O00O00O0O00O0O0O00O00O00O00O0O00O0O0O00O0O0O00O0O0O00O00O00O00O00O00O0O0O0O0O00O00O0O0O00O00O00O00O00O0O0O00O0O00O00O00O00O00O00O00O0O00;E=[]
     try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            lines = response.text.splitlines()
-            for line in lines:
-                username, password, expiry_date = line.strip().split(',')
-                users.append({'username': username, 'password': password, 'expiry_date': expiry_date})
-        else:
-            print(f"Failed to retrieve file from the URL: {url}")
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
-    return users
-
-
-def authenticate(username, password):
-    url = 'https://raw.githubusercontent.com/justicerat/Login/refs/heads/main/RAT3x.txt'  
-    users = read_users_from_web(url)
-
-
-    current_date = get_current_time_from_api()
-    if current_date is None:
-        print("Failed to retrieve the current date. Aborting login.")
-        return False
-
-    for user in users:
-        if user['username'] == username and user['password'] == password:
+        G=F.get(D)
+        if G.status_code==200:
+            L=G.text.splitlines()
+            for M in L:
+                I=M.strip().split((lambda s:A.decompress(B.b64decode(s)).decode())('eJzTAQAALQAt'))
+                if len(I)==3:N,O,P=I;E.append({(lambda s:A.decompress(B.b64decode(s)).decode())(H):N,(lambda s:A.decompress(B.b64decode(s)).decode())(J):O,(lambda s:A.decompress(B.b64decode(s)).decode())(K):P})
+        else:C(f"Failed to retrieve file from the URL: {D}")
+    except F.exceptions.RequestException as Q:C(f"An error occurred: {Q}")
+    return E
+def P(O0O0O0O0O0O0O0O00O00O0O0O00O0O0O00O00O0O00O0O00O00O0O00O00O0O0O00O00O00O00O00O0O0O0O00O0O0O0O0O00O0O00O00O0O00O0O0O0O00O0O0O0O00O0O00O0O00O00O00O0O00O00O00O0O0O0O0O0O0O0O0O00O00O0O0O0O0O00O00O00O0O0O00O00O00O0O00O00O00O0O0O0O0O0O0O0O0O00O0O00O00O00O0O00O0O0,O0O0O0O0O0O0O0O0O00O00O00O0O0O0O0O0O00O00O00O0O0O0O00O00O00O00O00O0O0O0O00O00O0O0O0O0O00O0O0O00O0O00O0O0O0O0O0O00O00O0O00O0O00O00O00O00O0O0O00O0O0O00O00O00O00O00O0O0O00O00O00O00O00O00O00O0O00O00O0O0O0O0O00O00O0O00O00O00O0O0O0O00O0O0O00O0O0O00O0O0O00O00O00O00O00O0O00):
+    E=False;G=(lambda s:A.decompress(B.b64decode(s)).decode())('eJwNxzEOgCAMBdAb0cHNzd3JeIGKlWICmPYTOb6+7Snw+Exk/IaUof3oLhZbhVSE2Ard3ZGjGIPWlnIlk8tJhU+nwv+3ZZ9GwMAHZkAcuQ==');I=O(G);F=N()
+    if F is None:C((lambda s:A.decompress(B.b64decode(s)).decode())('eJwFwdEJwCAQA9BVMoE79Mc9bA32QO4gpJ3f9/qIzQkXRCv4E36J55OYxhxmw3WXHLmwa0W2A/lMEvw='));return E
+    for D in I:
+        if D[(lambda s:A.decompress(B.b64decode(s)).decode())(H)]==O0O0O0O0O0O0O0O00O00O0O0O00O0O0O00O00O0O00O0O00O00O0O00O00O0O0O00O00O00O00O00O0O0O0O00O0O0O0O0O00O0O00O00O0O00O0O0O0O00O0O0O0O00O0O00O0O00O00O00O0O00O00O00O0O0O0O0O0O0O0O0O00O00O0O0O0O0O00O00O00O0O0O00O00O00O0O00O00O00O0O0O0O0O0O0O0O0O00O0O00O00O00O0O00O0O0 and D[(lambda s:A.decompress(B.b64decode(s)).decode())(J)]==O0O0O0O0O0O0O0O0O00O00O00O0O0O0O0O0O00O00O00O0O0O0O00O00O00O00O00O0O0O0O00O00O0O0O0O0O00O0O0O00O0O00O0O0O0O0O0O00O00O0O00O0O00O00O00O00O0O0O00O0O0O00O00O00O00O00O0O0O00O00O00O00O00O00O00O0O00O00O0O0O0O0O00O00O0O00O00O00O0O0O0O00O0O0O00O0O0O00O0O0O00O00O00O00O00O0O00:
             try:
-                expiry_date = datetime.strptime(user['expiry_date'], '%Y-%m-%d')
-
-
-                if current_date <= expiry_date:
-                    return True
-                else:
-                    print("The account has expired.")
-                    return False
-            except ValueError:
-                print(f"Error parsing the expiry date for {user['username']}.")
-                return False
-
-    print("Incorrect username or password.")
-    return False
-
-
-def run_pm2():
-    try:
-
-        current_directory = os.path.dirname(os.path.abspath(__file__))  
-        index_js_path = os.path.join(current_directory, 'index.js')  
-
-
-        subprocess.run(['pm2', 'start', index_js_path], check=True)
-        print("PM2 process started successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"Failed to start PM2 process. Error: {e}")
-    except FileNotFoundError as e:
-        print(f"PM2 not found. Make sure PM2 is installed and in your PATH. Error: {e}")
-
-# Ask for the username and password
-username = input(Fore.RED + "Enter your username: " + Style.RESET_ALL)
-password = input(Fore.RED + "Enter your password: " + Style.RESET_ALL)
-
-# Authenticate the user
-if authenticate(username, password):
-    print(Fore.RED + "Login successful!" + Style.RESET_ALL)
-    command = input(Fore.RED + "Please Type (RUN or run): " + Style.RESET_ALL).strip().lower()
-    if command == "run" or command == "Run" or command == "RUN" or command == "RUn":
-
-        run_pm2()
-else:
-    print("Login failed.")
+                M=L.strptime(D[(lambda s:A.decompress(B.b64decode(s)).decode())(K)],(lambda s:A.decompress(B.b64decode(s)).decode())('eJxTjdRVzdVVTQEACE8B9A=='))
+                if F<=M:return True
+                else:C((lambda s:A.decompress(B.b64decode(s)).decode())('eJwLyUhVSExOzi/NK1HISCxWSK0oyCxKTdEDAG1NCMo='));return E
+            except ValueError:C(f"Error parsing the expiry date for {D[((lambda s:A.decompress(B.b64decode(s)).decode()))(H)]}.");return E
+    C((lambda s:A.decompress(B.b64decode(s)).decode())('eJzzzEvOLypKTS5RKC1OLcpLzE1VyC9SKEgsLi7PL0rRAwDAowvs'));return E
+def Q():
+    try:E=os.path.dirname(os.path.abspath(__file__));F=os.path.join(E,(lambda s:A.decompress(B.b64decode(s)).decode())('eJzLzEtJrdDLKgYADlQDJA=='));I.run([(lambda s:A.decompress(B.b64decode(s)).decode())('eJwryDUCAAJfARA='),(lambda s:A.decompress(B.b64decode(s)).decode())('eJwrLkksKgEABo8CLw=='),F],check=True);C((lambda s:A.decompress(B.b64decode(s)).decode())('eJwL8DVSKCjKT04tLlYoLkksKklNUSguTQbx00pzcir1AMxXDHk='))
+    except I.CalledProcessError as D:C(f"Failed to start PM2 process. Error: {D}")
+    except FileNotFoundError as D:C(f"PM2 not found. Make sure PM2 is installed and in your PATH. Error: {D}")
+if __name__==(lambda s:A.decompress(B.b64decode(s)).decode())('eJyLj89NzMyLjwcADhcDIg=='):
+    R=G(D.RED+(lambda s:A.decompress(B.b64decode(s)).decode())('eJxzzStJLVKozC8tUigtTi3KS8xNtVIAAFhDB8g=')+E.RESET_ALL);S=G(D.RED+(lambda s:A.decompress(B.b64decode(s)).decode())('eJxzzStJLVKozC8tUihILC4uzy9KsVIAAFhzB9s=')+E.RESET_ALL)
+    if P(R,S):
+        C(D.GREEN+(lambda s:A.decompress(B.b64decode(s)).decode())('eJzzyU/PzFMoLk1OTi0uTivNUQQAOqQGew==')+E.RESET_ALL);T=G(D.RED+(lambda s:A.decompress(B.b64decode(s)).decode())('eJwLyElNLE5VCKksSFXQCAr1U8gvUigqzdO0UgAAdwEIUw==')+E.RESET_ALL).strip().lower()
+        if T==(lambda s:A.decompress(B.b64decode(s)).decode())('eJwrKs0DAAKxAVY='):Q()
+    else:C(D.RED+(lambda s:A.decompress(B.b64decode(s)).decode())('eJzzyU/PzFNIS8zMSU3RAwAhdASt')+E.RESET_ALL)
